@@ -55,23 +55,32 @@ namespace Comp4956_Lab1
             var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_LogicalDisk");
             foreach(ManagementObject drive in searcher.Get())
             {
-                double driveSize = double.Parse(drive["Size"].ToString());
-                double freeSpace = double.Parse(drive["FreeSpace"].ToString());
+                string name = (!Object.ReferenceEquals(null, drive["Name"]) ? drive["Name"] : "Unkown").ToString();
+                string description = (!Object.ReferenceEquals(null, drive["Description"]) ? drive["Description"] : "Unknown").ToString();
+                UInt32 errorCode = UInt32.Parse((!Object.ReferenceEquals(null, drive["ConfigManagerErrorCode"]) ? drive["ConfigManagerErrorCode"] : 0).ToString());
+                string deviceId = (!Object.ReferenceEquals(null, drive["DeviceId"]) ? drive["deviceId"] : "Unknown").ToString();
+                string fileSystem = (!Object.ReferenceEquals(null, drive["FileSystem"]) ? drive["FileSystem"] : "Unkown").ToString();
+                double driveSize = double.Parse((!Object.ReferenceEquals(null, drive["Size"]) ? drive["Size"] : 0).ToString());
+                double freeSpace = double.Parse((!Object.ReferenceEquals(null, drive["FreeSpace"]) ? drive["FreeSpace"] : 0).ToString());
+
                 driveSize = Math.Round(driveSize * Math.Pow(2, -20)); // Convert to MB
                 freeSpace = Math.Round(freeSpace * Math.Pow(2, -20));
                 double usedSpace = driveSize - freeSpace;
+                Console.WriteLine(Double.IsNaN(Math.Round((usedSpace / driveSize) * 100)));
+                string usedPercentage = Double.IsNaN(Math.Round((usedSpace / driveSize) * 100)) ? "0" : Math.Round(((usedSpace / driveSize) * 100)).ToString();
+                string freePercentage = Double.IsNaN(Math.Round((freeSpace / driveSize) * 100)) ? "0" : Math.Round(((freeSpace / driveSize) * 100)).ToString();
 
                 //Console.WriteLine(drive["ConfigManagerErrorCode"]);
-                textBox.Text += String.Format("Name: {0}\n", drive["Name"].ToString());
-                textBox.Text += String.Format("Description: {0}\n", drive["Description"].ToString());
-                //textBox.Text += String.Format("Error Code: {0}\n", drive["ConfigManagerErrorCode"].ToString());
-                textBox.Text += String.Format("Device ID: {0}\n", drive["DeviceID"].ToString());
-                textBox.Text += String.Format("FileSystem: {0}\n", drive["FileSystem"].ToString());
+                textBox.Text += String.Format("Name: {0}\n", name);
+                textBox.Text += String.Format("Description: {0}\n", description);
+                textBox.Text += String.Format("Error Code: {0}\n", errorCode);
+                textBox.Text += String.Format("Device ID: {0}\n", deviceId);
+                textBox.Text += String.Format("FileSystem: {0}\n", fileSystem);
                 textBox.Text += String.Format("Size: {0} MB\n", driveSize.ToString("#.#"));
                 textBox.Text += String.Format("Used: {0} MB\n", usedSpace.ToString("#.#"));
-                textBox.Text += String.Format("Used Percentage: {0}%\n", Math.Round(((usedSpace / driveSize) * 100)).ToString());
+                textBox.Text += String.Format("Used Percentage: {0}%\n", usedPercentage);
                 textBox.Text += String.Format("Free: {0} MB\n", freeSpace.ToString());
-                textBox.Text += String.Format("Free Percentage: {0}%\n", Math.Round(((freeSpace / driveSize) * 100)).ToString());
+                textBox.Text += String.Format("Free Percentage: {0}%\n", freePercentage);
                 textBox.Text += "\n";
             }
 
