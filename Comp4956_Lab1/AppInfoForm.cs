@@ -50,8 +50,80 @@ namespace Comp4956_Lab1
 
         private void okButton_Click(object sender, EventArgs e)
         {
+            bool errorOccured = false;
+            if (!fieldValid(specialtyText))
+            {
+                specialityError.SetError(this.specialtyText, "You must have this filled out");
+                errorOccured = true;
+            } else
+            {
+                specialityError.SetError(this.specialtyText, String.Empty);
+            }
+            if (!fieldValid(applicationText))
+            {
+                applicationError.SetError(this.applicationText, "You must have this filled out");
+                errorOccured = true;
+            } else
+            {
+                applicationError.SetError(this.applicationText, String.Empty);
+            }
+            if (!fieldValid(ownerText))
+            {
+                ownerError.SetError(this.ownerText, "You must have filled this out");
+                errorOccured = true;
+            } else
+            {
+                ownerError.SetError(this.ownerText, String.Empty);
+            }
+            if(errorOccured)
+            {
+                return;
+            }
             okPressed = true;
             this.Close();
+        }
+
+        private void specialtyText_Leave(object sender, EventArgs e)
+        {
+            if (!fieldValid((TextBox)sender))
+            {
+                specialtyText.Focus();
+                specialityError.SetError(this.specialtyText, "You must have this filled out");
+            } else
+            {
+                specialityError.SetError(this.specialtyText, String.Empty);
+            }
+        }
+
+        private void applicationText_Leave(object sender, EventArgs e)
+        {
+            if (!fieldValid((TextBox)sender))
+            {
+                applicationText.Focus();
+                applicationError.SetError(this.applicationText, "You must fill this out.");
+            } else
+            {
+                applicationError.SetError(this.applicationText, String.Empty);
+            }
+        }
+
+        private void ownerText_Leave(object sender, EventArgs e)
+        {
+            if(!fieldValid((TextBox)sender))
+            {
+                ownerText.Focus();
+                ownerError.SetError(this.ownerText, "You must fill this out");
+            } else
+            {
+                ownerError.SetError(this.ownerText, String.Empty);
+            }
+        }
+
+        private bool fieldValid(TextBox field)
+        {
+            if (field.Text == String.Empty)
+                return false;
+            return true;
         }
     }
 }
