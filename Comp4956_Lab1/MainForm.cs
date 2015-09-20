@@ -13,13 +13,24 @@ using System.Management;
 
 namespace Comp4956_Lab1
 {
+    /// <summary>
+    /// The main window of the application 
+    /// </summary>
     public partial class mainWindow : Form
     {
+        /// <summary>
+        /// Constructor, not used. 
+        /// </summary>
         public mainWindow()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Opens the app info form, and will update the registry with a new application 
+        /// when the app info form is closed
+        /// </summary>
+        /// <param name="sender">The register button</param>
+        /// <param name="e">Event args</param>
         private void registerButton_Click(object sender, EventArgs e)
         {
             /*
@@ -29,7 +40,11 @@ namespace Comp4956_Lab1
             infoForm.Show();
             infoForm.FormClosing += InfoForm_FormClosing;
         }
-
+        /// <summary>
+        /// Opens a color picker, when closed will update the registry
+        /// </summary>
+        /// <param name="sender">Title button </param>
+        /// <param name="e">Event args</param>
         private void titleColorButton_Click(object sender, EventArgs e)
         {
             DialogResult result = colorDialog1.ShowDialog();
@@ -47,7 +62,11 @@ namespace Comp4956_Lab1
                 
             }
         }
-
+        /// <summary>
+        /// Shows the disk info on the text box. 
+        /// </summary>
+        /// <param name="sender">The disk button</param>
+        /// <param name="e">Event args</param>
         private void diskInfoButton_Click(object sender, EventArgs e)
         {
             
@@ -85,7 +104,11 @@ namespace Comp4956_Lab1
             }
 
         }
-
+        /// <summary>
+        /// Shows the processes in the text box. 
+        /// </summary>
+        /// <param name="sender">Process button</param>
+        /// <param name="e">event args</param>
         private void processInfoButton_Click(object sender, EventArgs e)
         {
             var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Process");
@@ -105,7 +128,11 @@ namespace Comp4956_Lab1
                 this.textBox.Text += "\n";
             }
         }
-       
+       /// <summary>
+       /// Fires when the appinfo form is closed and will update registry button. 
+       /// </summary>
+       /// <param name="sender">appInfoForm</param>
+       /// <param name="e">Event args</param>
         private void InfoForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             AppInfoForm infoForm = (AppInfoForm)sender;
