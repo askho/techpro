@@ -4,6 +4,9 @@
 #include <string.h>
 #include <semaphore.h>
 #include <fcntl.h>
+#include <stdlib.h>
+void printUsage();
+
 int stop = 0;
 sem_t *printLock;
 void* counter(void* tabPtr) {
@@ -21,17 +24,37 @@ void* counter(void* tabPtr) {
     pthread_exit(0);
 }
 
-int main() {
-    pthread_t thread1, thread2, thread3, thread4;
+int main ( int argc, char **argv ) {
+    if(argc != 3 || strcmp(argv[1], "-h") == 0) {
+        printUsage();
+        return 1;
+    }
+    int threadNum = atoi(argv[1]);
+    int sleepTime = atoi(argv[2]);
+    if(threadNum > 6) {
+        threadNum = 6;
+    }
+    sem_close(printLock);
+    sem_unlink("sem");
+    
+    pthread_t thread[6];
     printLock = sem_open("sem", O_CREAT, 0777, 1);
-    pthread_create(&thread1,NULL, counter, (void*)0);
-    pthread_create(&thread2,NULL, counter, (void*)1);
-    pthread_create(&thread3,NULL, counter, (void*)2);
-    pthread_create(&thread4,NULL, counter, (void*)3);
-    sleep(1);
+    for(int i = 0; i < threadNum ; i++) {
+        pthread_create(&thread[i],NULL, counter, (void*)i);
+    }
+    sleep(sleepTime);
     stop = 1;
-    pthread_join(thread1, NULL);
-    pthread_join(thread2, NULL);
-    pthread_join(thread3, NULL);
-    pthread_join(thread4, NULL);
+    for(int i = 0; i < threadNum ; i++) {
+        pthread_join(thread[i], NULL);
+    }
+    
+    sem_close(printLock);
+    sem_unlink("sem");
+
+}
+
+void printUsage() {
+    printf("Usage:\n");
+    printf("Param1 : integer for number of threads (Max6)\n");
+    printf("Param2 : integer for time to run\n");
 }
