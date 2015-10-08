@@ -23,8 +23,16 @@ void* counter(void* tabPtr) {
     
     pthread_exit(0);
 }
+void * time(void * timeLimit) {
+    sleep((int)timeLimit);
+    stop = 1;
+    pthread_exit(0);
+}
 
 int main ( int argc, char **argv ) {
+    /**
+        Handle arguments.
+     **/
     if(argc != 3 || strcmp(argv[1], "-h") == 0) {
         printUsage();
         return 1;
@@ -37,13 +45,13 @@ int main ( int argc, char **argv ) {
     sem_close(printLock);
     sem_unlink("sem");
     
-    pthread_t thread[6];
+    pthread_t thread[7];
     printLock = sem_open("sem", O_CREAT, 0777, 1);
-    for(int i = 0; i < threadNum ; i++) {
+    pthread_create(&thread[0],NULL, counter, (void*)sleepTime); /*Create timer thread*/
+    for(int i = 1; i < threadNum ; i++) {
         pthread_create(&thread[i],NULL, counter, (void*)i);
     }
-    sleep(sleepTime);
-    stop = 1;
+    
     for(int i = 0; i < threadNum ; i++) {
         pthread_join(thread[i], NULL);
     }
