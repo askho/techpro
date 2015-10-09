@@ -18,3 +18,23 @@ c:\users\student\documents\visual studio 2015\Projects\lab1\lab1\bin\Microsoft.C
 c:\users\student\documents\visual studio 2015\Projects\lab1\lab1\obj\Debug\lab1.csprojResolveAssemblyReference.cache
 c:\users\student\documents\visual studio 2015\Projects\lab1\lab1\obj\Debug\lab1.dll
 c:\users\student\documents\visual studio 2015\Projects\lab1\lab1\obj\Debug\lab1.pdb
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\csc.exe
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\vbc.exe
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\VBCSCompiler.exe
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\lab1.dll.config
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\lab1.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\lab1.pdb
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Leon Ho\Desktop\techpro\lab1\obj\Debug\lab1.csprojResolveAssemblyReference.cache
+C:\Users\Leon Ho\Desktop\techpro\lab1\obj\Debug\lab1.dll
+C:\Users\Leon Ho\Desktop\techpro\lab1\obj\Debug\lab1.pdb

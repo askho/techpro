@@ -13,13 +13,13 @@ namespace lab1 {
     public partial class _default {
         
         /// <summary>
-        /// form1 control.
+        /// form control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
         
         /// <summary>
         /// investmentOption control.
@@ -40,6 +40,15 @@ namespace lab1 {
         protected global::System.Web.UI.WebControls.TextBox interestRate;
         
         /// <summary>
+        /// intresetRateValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator intresetRateValidator;
+        
+        /// <summary>
         /// numberYears control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,15 @@ namespace lab1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox numberYears;
+        
+        /// <summary>
+        /// yearRangeValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator yearRangeValidator;
         
         /// <summary>
         /// output control.
