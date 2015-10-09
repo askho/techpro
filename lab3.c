@@ -23,7 +23,7 @@ void* counter(void* tabPtr) {
     
     pthread_exit(0);
 }
-void * time(void * timeLimit) {
+void* timeCounter(void * timeLimit) {
     sleep((int)timeLimit);
     stop = 1;
     pthread_exit(0);
@@ -47,7 +47,7 @@ int main ( int argc, char **argv ) {
     
     pthread_t thread[7];
     printLock = sem_open("sem", O_CREAT, 0777, 1);
-    pthread_create(&thread[0],NULL, counter, (void*)sleepTime); /*Create timer thread*/
+    pthread_create(&thread[0],NULL, timeCounter, (void*)sleepTime); /*Create timer thread*/
     for(int i = 1; i < threadNum ; i++) {
         pthread_create(&thread[i],NULL, counter, (void*)i);
     }
