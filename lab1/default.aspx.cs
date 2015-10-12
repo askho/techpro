@@ -9,13 +9,22 @@ namespace lab1
 {
     public partial class _default : System.Web.UI.Page
     {
+        /// <summary>
+        /// Add the investment options to the control
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             investmentOption.Items.Add("150");
             investmentOption.Items.Add("120");
             investmentOption.Items.Add("100");
         }
-
+        /// <summary>
+        /// Calculate the output based on a compound intrest formula
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void calc_Click(object sender, EventArgs e)
         {
 
@@ -34,7 +43,11 @@ namespace lab1
             var totalint = totala - totalamt;
             output.Text = (totala).ToString("$#.##");
         }
-
+        /// <summary>
+        /// Clear the text fields. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void clear_Click(object sender, EventArgs e)
         {
             interestRate.Text = "";
