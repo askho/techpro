@@ -1,4 +1,4 @@
-# Lab3 
+# Lab4
 This lab is for COMP 4956. The task is to spawn multiple threads and output a counter and stop based on a timer thread. 
 
 # Requirements
