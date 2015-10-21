@@ -2,6 +2,7 @@
 #include <pthread.h>
 #include <unistd.h>
 #include <semaphore.h>
+#include <fcntl.h>
 void* consumer();
 void* producer();
 sem_t *bufferAvailableToRead, *bufferAvailableToWrite;
@@ -40,7 +41,7 @@ void* consumer() {
 }
 
 void* producer() {
-  int index;
+  int index = 0;
   while(1){
     sem_wait(bufferAvailableToWrite);
       printf("Producer wrote %d \n", index);
