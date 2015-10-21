@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
 void* consumer() {
   while(1){
     sem_wait(bufferAvailableToRead);
-      printf("Read to %d \n", buffer[readTo]);
+      printf("Consumer read %d \n", buffer[readTo]);
       buffer[readTo++] = 0;
       if(readTo == 10) {
         readTo = 0;
@@ -43,7 +43,7 @@ void* producer() {
   int index;
   while(1){
     sem_wait(bufferAvailableToWrite);
-      printf("Wrote to %d \n", index);
+      printf("Producer wrote %d \n", index);
       buffer[writtenTo++] = index++;
       if(writtenTo == 10) {
         writtenTo = 0;
